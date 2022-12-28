@@ -13,6 +13,12 @@
 ### Test Framework:
 **JUnit5** 
 
+### Building Project
+- Select Proper JDK and Maven versions in IntelliJ Idea
+- Resolve Maven Dependencies
+- Build with: 'mvn clean install'
+- Project is ready for running Tests
+
 ### Test reports with Allure
 
 #### Allure Documentation: [Allure](https://docs.qameta.io/allure/#_about)
@@ -29,16 +35,12 @@
 - Check version in CMD:
 - $ allure --version
 
-#### Test reporting:
+### Test reporting:
+**First you must run a test in order to generate results in /target**
 
-$ mvn clean test
-
-#### Generate HTML raport:
+#### Generate HTML report:
 
 $ allure serve target/allure-results
-
-**Example:**
-$ allure serve C:\Users\swiec\IdeaProjects\REST-Assured-JUnit5-Allure\target\surefire-reports
 
 ### Allure annotations:
 
