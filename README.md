@@ -37,6 +37,9 @@ $ mvn clean test
 
 $ allure serve target/allure-results
 
+**Example:**
+$ allure serve C:\Users\swiec\IdeaProjects\REST-Assured-JUnit5-Allure\target\surefire-reports
+
 ### Allure annotations:
 
 - @Epic
