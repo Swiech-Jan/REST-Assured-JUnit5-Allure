@@ -1,9 +1,12 @@
+package testSuite;
+
 import static io.restassured.RestAssured.*;
+import static common.RequestSpecifications.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
-
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import common.GraphQLQuery;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;

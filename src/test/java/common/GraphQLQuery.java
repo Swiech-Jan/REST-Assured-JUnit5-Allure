@@ -1,3 +1,5 @@
+package common;
+
 public class GraphQLQuery {
     private String query;
     private Object variables;
