@@ -7,6 +7,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
+import groovy.util.logging.Log;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
@@ -48,7 +49,8 @@ public class RestExampleTests {
                 .when()
                 .get("/posts/1")
                 .then().log().all()
-                .and().assertThat().body(matchesJsonSchemaInClasspath("schemaTemplates/getOnePostSchema"))
+                .and().assertThat().body(matchesJsonSchemaInClasspath("src/test/java/schemaTemplates/getOnePostSchema.json"))
+                .and().log().all()
                 .and().statusCode(200)
                 .extract().response();
     }
@@ -71,5 +73,25 @@ public class RestExampleTests {
                 .and().spec(restExampleServiceResponseSpec())
                 .and().log().all()
                 .extract().response();
+    }
+
+    @Test
+    @Feature("Smoke Test 4")
+    @Epic("Epic 4")
+    @Story("Story 4")
+    @Description("Example of data extraction from JSON response object")
+    @Severity(SeverityLevel.CRITICAL)
+    void basicDataExtractionFromJsonObject() {
+
+
+        String streetName =
+
+                given().spec(restExampleServiceRequestSpec())
+                        .when()
+                        .get("/users/1")
+                        .then()
+                        .extract()
+                        .path("address.street");
+
     }
 }
