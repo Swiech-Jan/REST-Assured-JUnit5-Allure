@@ -7,7 +7,7 @@ import static common.BaseConfiguration.*;
 
 public class RequestSpecifications {
 
-	public static RequestSpecification RestExampleServiceRequestSpec() {
+	public static RequestSpecification restExampleServiceRequestSpec() {
 		RequestSpecBuilder builder = new RequestSpecBuilder();
 		builder.setBaseUri(restServiceExampleUrl);
 		//builder.setProxy("exampleProxyUrl", 8080)
@@ -16,7 +16,7 @@ public class RequestSpecifications {
 		return requestSpec;
 	}
 
-	public static RequestSpecification GraphqlExampleServiceRequestSpec() {
+	public static RequestSpecification graphqlExampleServiceRequestSpec() {
 		RequestSpecBuilder builder = new RequestSpecBuilder();
 		builder.setBaseUri(graphqlServiceExampleUrl);
 		//builder.setProxy("exampleProxyUrl", 8080)

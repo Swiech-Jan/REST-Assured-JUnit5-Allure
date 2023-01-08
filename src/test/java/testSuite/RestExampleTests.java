@@ -3,15 +3,14 @@ package testSuite;
 import static io.restassured.RestAssured.*;
 import static common.RequestSpecifications.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matchers.*;
+
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-public class SmokeTest {
+public class RestExampleTests {
 
     @Test
     @Feature("Smoke Test 1")
@@ -23,7 +22,7 @@ public class SmokeTest {
 
         Response response = given()
                 .log().all()
-                .spec(RestExampleServiceRequestSpec())
+                .spec(restExampleServiceRequestSpec())
                 .when()
                 .get("/posts")
                 .then().log().all()
@@ -42,7 +41,7 @@ public class SmokeTest {
 
         Response response = given()
                 .log().all()
-                .spec(RestExampleServiceRequestSpec())
+                .spec(restExampleServiceRequestSpec())
                 .when()
                 .get("/posts/1")
                 .then().log().all()
