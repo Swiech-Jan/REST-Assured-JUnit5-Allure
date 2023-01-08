@@ -7,9 +7,9 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
 import org.json.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
-// refer to https://testautomationu.applitools.com/automating-your-api-tests-with-rest-assured/chapter1.html
 
 // First add POM dependency - org.json
 

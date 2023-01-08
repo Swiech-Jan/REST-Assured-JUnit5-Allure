@@ -2,11 +2,13 @@ package testSuite;
 
 import static io.restassured.RestAssured.*;
 import static common.RequestSpecifications.*;
+import static common.ResponseSpecifications.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
@@ -25,8 +27,8 @@ public class RestExampleTests {
                 .spec(restExampleServiceRequestSpec())
                 .when()
                 .get("/posts")
-                .then().log().all()
-                .and().statusCode(200)
+                .then().spec(restExampleServiceResponseSpec())
+                .and().log().all()
                 .extract().response();
 
     }

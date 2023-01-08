@@ -11,9 +11,11 @@
 - Allure 2.2.1 (refer to next section)
 
 ### Test Framework:
-**JUnit5** 
+
+**JUnit5**
 
 ### Building Project
+
 - Select Proper JDK and Maven versions in IntelliJ Idea
 - Resolve Maven Dependencies
 - Build with: 'mvn clean install'
@@ -36,6 +38,7 @@
 - $ allure --version
 
 ### Test reporting:
+
 **First you must run a test in order to generate results in /target**
 
 #### Generate HTML report:
@@ -52,3 +55,8 @@ $ allure serve target/allure-results
 - @Step
 - @Attachment
 - @Link
+
+### REST-Assured Introduction
+
+For REST-Assured Introduction refer
+to: [REST-Assured Introduction](https://testautomationu.applitools.com/automating-your-api-tests-with-rest-assured/chapter1.html)
