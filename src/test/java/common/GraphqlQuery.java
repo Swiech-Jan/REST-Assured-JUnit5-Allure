@@ -1,10 +1,10 @@
 package common;
 
-public class GraphQLQuery {
+public class GraphqlQuery {
     private String query;
     private Object variables;
 
-    public void setQuery(String query){
+    public void setQuery(String query) {
         this.query = query;
     }
 
@@ -12,11 +12,11 @@ public class GraphQLQuery {
         return this.query;
     }
 
-    public void setVariables(Object variables){
+    public void setVariables(Object variables) {
         this.variables = variables;
     }
 
-    public Object getVariables(){
+    public Object getVariables() {
         return this.variables;
     }
 

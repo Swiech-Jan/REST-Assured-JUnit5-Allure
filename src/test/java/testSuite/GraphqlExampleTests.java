@@ -2,7 +2,7 @@ package testSuite;
 
 import static io.restassured.RestAssured.*;
 
-import common.GraphQLQuery;
+import common.GraphqlQuery;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
@@ -24,7 +24,7 @@ public class GraphqlExampleTests {
     @Severity(SeverityLevel.CRITICAL)
     public void graphqlSampleTestWithResponseValidation() {
 
-        GraphQLQuery query = new GraphQLQuery();
+        GraphqlQuery query = new GraphqlQuery();
         query.setQuery("query getTypes($limit: Int) {pokemon_v2_type(limit: $limit) { id generation_id name }}");
 
         JSONObject variables = new JSONObject();
