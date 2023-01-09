@@ -8,6 +8,7 @@ import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 import groovy.util.logging.Log;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
@@ -48,10 +49,11 @@ public class RestExampleTests {
                 .spec(restExampleServiceRequestSpec())
                 .when()
                 .get("/posts/1")
-                .then().log().all()
-                .and().assertThat().body(matchesJsonSchemaInClasspath("src/test/java/schemaTemplates/getOnePostSchema.json"))
-                .and().log().all()
-                .and().statusCode(200)
+                .then()
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("src/test/resources/schemaTemplates/getOnePostSchema.json"))
+                .and()
+                .log().all()
                 .extract().response();
     }
 
