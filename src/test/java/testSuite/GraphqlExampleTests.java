@@ -18,11 +18,11 @@ public class GraphqlExampleTests {
 
     @Test
     @Feature("GraphQL")
-    @Epic("Epic 3")
-    @Story("Story 3")
+    @Epic("Epic 1")
+    @Story("Story 1")
     @Description("GraphQL example test")
     @Severity(SeverityLevel.CRITICAL)
-    public void test3() {
+    public void graphqlSampleTestWithResponseValidation() {
 
         GraphQLQuery query = new GraphQLQuery();
         query.setQuery("query getTypes($limit: Int) {pokemon_v2_type(limit: $limit) { id generation_id name }}");
@@ -32,14 +32,18 @@ public class GraphqlExampleTests {
 
         query.setVariables(variables.toString());
 
-        given().
-                contentType(ContentType.JSON).
-                body(query).
-                when().
-                post("https://beta.pokeapi.co/graphql/v1beta").
-                then().
-                assertThat().
-                statusCode(200);
-    }
+        System.out.println("This are query variables: " + variables);
+        System.out.println("This is query body: " + query);
 
+        given()
+                .contentType(ContentType.JSON)
+                .body(query)
+                .when()
+                .post("https://beta.pokeapi.co/graphql/v1beta")
+                .then()
+                .log().body()
+                .and()
+                .assertThat()
+                .statusCode(200);
+    }
 }
