@@ -41,6 +41,10 @@ public class RestExampleTests {
     @Severity(SeverityLevel.CRITICAL)
     void basicSchemaValidation() {
 
+        // For JSON schema validation refer to:
+        // https://json-schema.org/understanding-json-schema/
+        // https://jsonschema.net/app/schemas/194490
+
         Response response = given()
                 .log().all()
                 .spec(restExampleServiceRequestSpec())
