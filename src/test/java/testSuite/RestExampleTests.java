@@ -3,11 +3,8 @@ package testSuite;
 import static io.restassured.RestAssured.*;
 import static common.RequestSpecifications.*;
 import static common.ResponseSpecifications.*;
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
-import groovy.util.logging.Log;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
@@ -51,7 +48,7 @@ public class RestExampleTests {
                 .get("/posts/1")
                 .then()
                 .assertThat()
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("src/test/resources/schemaTemplates/getOnePostSchema.json"))
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemaTemplates/getOnePostSchema.json"))
                 .and()
                 .log().all()
                 .extract().response();
