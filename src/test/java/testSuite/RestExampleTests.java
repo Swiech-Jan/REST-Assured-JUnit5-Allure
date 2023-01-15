@@ -6,15 +6,10 @@ import static common.ResponseSpecifications.*;
 import static org.hamcrest.Matchers.*;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
-
 public class RestExampleTests {
-
     @Test
     @Feature("Smoke Test 1")
     @Epic("Epic 1")
@@ -23,21 +18,18 @@ public class RestExampleTests {
     @Severity(SeverityLevel.CRITICAL)
     void basicGetCall() {
 
-        Response response = given()
-                .log().all()
+        given()
                 .spec(restExampleServiceRequestSpec())
-                .when()
-                .get("/posts")
+                .when().get("/posts")
                 .then().spec(restExampleServiceResponseSpec())
-                .and().log().all()
-                .extract().response();
+                .and().log().all();
     }
 
     @Test
     @Feature("Smoke Test 2")
     @Epic("Epic 2")
     @Story("Story 2")
-    @Description("Simple Get Request")
+    @Description("Schema validation example")
     @Severity(SeverityLevel.CRITICAL)
     void basicSchemaValidation() {
 
@@ -45,17 +37,12 @@ public class RestExampleTests {
         // https://json-schema.org/understanding-json-schema/
         // https://jsonschema.net/app/schemas/194490
 
-        Response response = given()
-                .log().all()
-                .spec(restExampleServiceRequestSpec())
-                .when()
-                .get("/posts/1")
-                .then()
-                .assertThat()
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemaTemplates/getOnePostSchema.json"))
-                .and()
-                .log().all()
-                .extract().response();
+        given()
+                .spec(restExampleServiceRequestSpec()).log().all()
+                .when().get("/posts/1")
+                .then().spec(graphqlExampleServiceResponseSpec())
+                .and().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemaTemplates/getOnePostSchema.json"))
+                .and().log().all();
     }
 
     @Test
@@ -66,16 +53,12 @@ public class RestExampleTests {
     @Severity(SeverityLevel.CRITICAL)
     void basicJsonPathAssertion() {
 
-        Response response = given()
-                .log().all()
-                .spec(restExampleServiceRequestSpec())
-                .when()
-                .get("/users/1")
-                .then()
-                .assertThat().body("address.street", equalTo("Kulas Light"))
-                .and().spec(restExampleServiceResponseSpec())
-                .and().log().all()
-                .extract().response();
+        given()
+                .spec(restExampleServiceRequestSpec()).log().all()
+                .when().get("/users/1")
+                .then().spec(restExampleServiceResponseSpec())
+                .and().assertThat().body("address.street", equalTo("Kulas Light"))
+                .and().log().all();
     }
 
     @Test
@@ -86,15 +69,11 @@ public class RestExampleTests {
     @Severity(SeverityLevel.CRITICAL)
     void basicDataExtractionFromJsonObject() {
 
-
         String streetName =
+                given().spec(restExampleServiceRequestSpec()).log().all()
+                        .when().get("/users/1")
+                        .then().extract().path("address.street");
 
-                given().spec(restExampleServiceRequestSpec())
-                        .when()
-                        .get("/users/1")
-                        .then()
-                        .extract()
-                        .path("address.street");
-
+        System.out.println("This is extracted street value: " + streetName);
     }
 }

@@ -15,4 +15,14 @@ public class ResponseSpecifications {
         return responseSpec;
 
     }
+
+    public static ResponseSpecification graphqlExampleServiceResponseSpec() {
+
+        ResponseSpecBuilder builder = new ResponseSpecBuilder();
+        builder.expectStatusCode(200);
+        builder.expectContentType(ContentType.JSON);
+        ResponseSpecification responseSpec = builder.build();
+        return responseSpec;
+
+    }
 }
