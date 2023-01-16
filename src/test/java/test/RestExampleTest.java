@@ -1,4 +1,4 @@
-package testSuite;
+package test;
 
 import static io.restassured.RestAssured.*;
 import static common.RequestSpecifications.*;
@@ -9,14 +9,14 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
 
-public class RestExampleTests {
+public class RestExampleTest {
     @Test
     @Feature("Smoke Test 1")
     @Epic("Epic 1")
     @Story("Story 1")
     @Description("Simple Get Request")
     @Severity(SeverityLevel.CRITICAL)
-    void basicGetCall() {
+    void testBasicGetCall() {
 
         given()
                 .spec(restExampleServiceRequestSpec())
@@ -31,7 +31,7 @@ public class RestExampleTests {
     @Story("Story 2")
     @Description("Schema validation example")
     @Severity(SeverityLevel.CRITICAL)
-    void basicSchemaValidation() {
+    void testBasicSchemaValidation() {
 
         // For JSON schema validation refer to:
         // https://json-schema.org/understanding-json-schema/
@@ -51,7 +51,7 @@ public class RestExampleTests {
     @Story("Story 3")
     @Description("Simple JSON path assertion using hamcrest assertions")
     @Severity(SeverityLevel.CRITICAL)
-    void basicJsonPathAssertion() {
+    void testBasicJsonPathAssertion() {
 
         given()
                 .spec(restExampleServiceRequestSpec()).log().all()
@@ -67,7 +67,7 @@ public class RestExampleTests {
     @Story("Story 4")
     @Description("Example of data extraction from JSON response object")
     @Severity(SeverityLevel.CRITICAL)
-    void basicDataExtractionFromJsonObject() {
+    void testBasicDataExtractionFromJsonObject() {
 
         String streetName =
                 given().spec(restExampleServiceRequestSpec()).log().all()

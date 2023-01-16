@@ -1,4 +1,4 @@
-package testSuite;
+package test;
 
 import static common.BaseConfiguration.getTypesQuery;
 import static common.GraphqlQueryBuilder.getQueryBody;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.*;
 import io.qameta.allure.*;
 
 
-public class GraphqlExampleTests {
+public class GraphqlExampleTest {
 
     @Test
     @Feature("GraphQL")
@@ -19,7 +19,7 @@ public class GraphqlExampleTests {
     @Story("Story 1")
     @Description("GraphQL example test")
     @Severity(SeverityLevel.CRITICAL)
-    public void graphqlSampleTestWithResponseValidation() {
+    public void testGraphqlSampleTestWithResponseValidation() {
 
         given().spec(graphqlExampleServiceRequestSpec())
                 .body(getQueryBody(getTypesQuery, 1))
