@@ -4,7 +4,7 @@
 
 #### Java, Maven, REST-Assured, JUnit5, Reporting Plugin:
 
-- JAVA 11 - temurin Eclipse Temurin 11.0.17
+- JAVA 11.0.17 ORACLE LTS
 - Maven 3.8.6
 - REST-Assured 5.3.0
 - JUnit5 5.9.0

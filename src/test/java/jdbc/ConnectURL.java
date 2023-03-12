@@ -13,13 +13,12 @@ public class ConnectURL {
         String connectionUrl = "jdbc:sqlserver://<server>:<port>;databaseName=AdventureWorks;user=<user>;password=<password>";
 
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-            String SQL = "SELECT TOP 10 * FROM Person.Contact";
+            String SQL = "SELECT Description FROM Products WHERE Id = '1'";
             ResultSet rs = stmt.executeQuery(SQL);
 
-            // Iterate through the data in the result set and display it.
-            while (rs.next()) {
-                System.out.println(rs.getString("FirstName") + " " + rs.getString("LastName"));
-            }
+            // Get Result
+            System.out.println(rs.getString("Description"));
+
         }
         // Handle any errors that may have occurred.
         catch (SQLException e) {
